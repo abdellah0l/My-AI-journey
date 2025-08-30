@@ -124,26 +124,6 @@ The website is fully responsive and optimized for:
 - Update `app/globals.css` for custom styles
 - Adjust component styles in individual files
 
-## 🚀 Deployment
-
-### Vercel (Recommended)
-1. Push your code to GitHub
-2. Connect your repository to Vercel
-3. Deploy automatically
-
-### Other Platforms
-- **Netlify**: Build command: `npm run build`, Publish directory: `.next`
-- **Railway**: Connect your GitHub repository
-- **AWS Amplify**: Connect your repository and build
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
-
-## 🤝 Contributing
-
-Feel free to submit issues and enhancement requests!
-
 ---
 
 **Built with ❤️ using Next.js, TypeScript, and Tailwind CSS**
