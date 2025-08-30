@@ -121,7 +121,7 @@ export default function Home() {
               Tools I Have Learnt
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Here's a short brief about what I have learnt
+              Here's a short brief about what I have learnt during my Journey
             </p>
           </motion.div>
 
