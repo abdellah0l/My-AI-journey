@@ -747,11 +747,11 @@ video {
 .h-screen {
   height: 100vh;
 }
-.min-h-screen {
-  min-height: 100vh;
-}
 .min-h-\[500px\] {
   min-height: 500px;
+}
+.min-h-screen {
+  min-height: 100vh;
 }
 .w-1 {
   width: 0.25rem;
@@ -1053,6 +1053,9 @@ video {
 .to-primary-800 {
   --tw-gradient-to: #1e40af var(--tw-gradient-to-position);
 }
+.p-10 {
+  padding: 2.5rem;
+}
 .p-2 {
   padding: 0.5rem;
 }
@@ -1064,9 +1067,6 @@ video {
 }
 .p-8 {
   padding: 2rem;
-}
-.p-10 {
-  padding: 2.5rem;
 }
 .px-4 {
   padding-left: 1rem;
