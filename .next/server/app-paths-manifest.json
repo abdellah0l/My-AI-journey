@@ -1,3 +1,4 @@
 {
-  "/page": "app/page.js"
+  "/page": "app/page.js",
+  "/scikit-learn/page": "app/scikit-learn/page.js"
 }
