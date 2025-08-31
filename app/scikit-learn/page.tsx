@@ -45,23 +45,23 @@ export default function ScikitLearnPage() {
             </div>
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Currently Learning</h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              I'm currently in the process of learning Scikit-learn. This comprehensive machine learning 
+              I&apos;m currently in the process of learning Scikit-learn. This comprehensive machine learning 
               library is next on my AI journey!
             </p>
           </div>
 
           <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
             <div className="prose max-w-none">
-              <h3 className="text-xl font-semibold mb-4 text-gray-900">What I'm Planning to Learn</h3>
+              <h3 className="text-xl font-semibold mb-4 text-gray-900">What I&apos;m Planning to Learn</h3>
               
               <div className="space-y-4 text-gray-700">
                 <p>
                   Scikit-learn is a comprehensive machine learning library for Python that provides 
-                  simple and efficient tools for data mining and data analysis. It's built on NumPy, 
+                  simple and efficient tools for data mining and data analysis. It&apos;s built on NumPy, 
                   SciPy, and matplotlib, making it a powerful tool for machine learning tasks.
                 </p>
 
-                <h4 className="text-lg font-semibold text-gray-900 mt-6 mb-3">Key Areas I'll Cover:</h4>
+                <h4 className="text-lg font-semibold text-gray-900 mt-6 mb-3">Key Areas I&apos;ll Cover:</h4>
                 <ul className="list-disc list-inside space-y-2 ml-4">
                   <li><strong>Supervised Learning:</strong> Classification and regression algorithms</li>
                   <li><strong>Unsupervised Learning:</strong> Clustering, dimensionality reduction, and density estimation</li>
@@ -85,7 +85,7 @@ export default function ScikitLearnPage() {
 
                 <div className="bg-yellow-50 border-l-4 border-yellow-500 p-4 mt-6">
                   <p className="text-yellow-800">
-                    <strong>Coming Soon:</strong> I'll be creating comprehensive tutorials and examples 
+                    <strong>Coming Soon:</strong> I&apos;ll be creating comprehensive tutorials and examples 
                     covering all these topics. The tutorial will include practical examples, real-world 
                     datasets, and hands-on exercises to master machine learning with scikit-learn.
                   </p>

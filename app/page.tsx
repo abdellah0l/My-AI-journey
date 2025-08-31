@@ -63,7 +63,7 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-xl md:text-2xl text-gray-700 mb-8 leading-relaxed"
           >
-            I'm passionate about becoming an AI engineer because I believe artificial intelligence 
+            I&apos;m passionate about becoming an AI engineer because I believe artificial intelligence 
             has the power to transform our world. From automating complex tasks to solving 
             previously unsolvable problems, AI represents the future of technology. I want to 
             be part of this revolution, creating intelligent systems that can learn, adapt, 
@@ -121,7 +121,7 @@ export default function Home() {
               Tools I Have Learnt
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Here's a short brief about what I have learnt during my Journey
+              Here&apos;s a short brief about what I have learnt during my Journey
             </p>
           </motion.div>
 
