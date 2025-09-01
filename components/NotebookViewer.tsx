@@ -45,6 +45,7 @@ export default function NotebookViewer({ isOpen, onClose, notebookPath, title }:
         throw new Error('Failed to load notebook')
       }
       const data = await response.json()
+      console.log('showing on notebook viewer ', data);
       setNotebookData(data)
     } catch (err) {
       setError('Failed to load notebook content')
@@ -84,9 +85,9 @@ export default function NotebookViewer({ isOpen, onClose, notebookPath, title }:
             <div className="flex items-center gap-2 mb-2">
               <span className="text-gray-400 text-sm">Output:</span>
             </div>
-            <pre className="text-blue-400 text-sm overflow-x-auto">
-              <code>{JSON.stringify(cell.outputs, null, 2)}</code>
-            </pre>
+<pre className="text-blue-400 text-sm overflow-x-auto">
+  <code>{JSON.stringify(cell.outputs?.[0]?.text ?? cell.outputs?.[0]?.data?.['text/plain'] ?? '', null, 2)}</code>
+</pre>
           </div>
         )}
       </div>
