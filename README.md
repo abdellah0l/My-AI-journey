@@ -1,6 +1,7 @@
 # AI Journey Website
 
 A beautiful, modern website showcasing my journey learning AI and machine learning tools. Built with Next.js, TypeScript, and Tailwind CSS.
+<h3>the link : <a href="https://my-ai-journey-abdellah.vercel.app/">my-ai-journey-abdellah.vercel.app</a></h3>
 
 ## 🚀 Features
 
