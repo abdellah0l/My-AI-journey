@@ -1,78 +1,85 @@
-'use client'
+"use client";
 
-import { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
-import { X, Play, FileText, Code } from 'lucide-react'
+import { useState, useEffect, useCallback } from "react";
+import { motion } from "framer-motion";
+import { X, Play, FileText, Code } from "lucide-react";
 
 interface NotebookCell {
-  cell_type: 'markdown' | 'code'
-  source: string[]
-  outputs?: any[]
-  execution_count?: number
+  cell_type: "markdown" | "code";
+  source: string[];
+  outputs?: any[];
+  execution_count?: number;
 }
 
 interface NotebookData {
-  cells: NotebookCell[]
-  metadata: any
-  nbformat: number
-  nbformat_minor: number
+  cells: NotebookCell[];
+  metadata: any;
+  nbformat: number;
+  nbformat_minor: number;
 }
 
 interface NotebookViewerProps {
-  isOpen: boolean
-  onClose: () => void
-  notebookPath: string
-  title: string
+  isOpen: boolean;
+  onClose: () => void;
+  notebookPath: string;
+  title: string;
 }
 
-export default function NotebookViewer({ isOpen, onClose, notebookPath, title }: NotebookViewerProps) {
-  const [notebookData, setNotebookData] = useState<NotebookData | null>(null)
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
+export default function NotebookViewer({
+  isOpen,
+  onClose,
+  notebookPath,
+  title,
+}: NotebookViewerProps) {
+  const [notebookData, setNotebookData] = useState<NotebookData | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const loadNotebook = useCallback(async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const response = await fetch(notebookPath);
+      if (!response.ok) {
+        throw new Error("Failed to load notebook");
+      }
+      const data = await response.json();
+      console.log("showing on notebook viewer ", data);
+      setNotebookData(data);
+    } catch (err) {
+      setError("Failed to load notebook content");
+      console.error("Error loading notebook:", err);
+    } finally {
+      setLoading(false);
+    }
+  }, [notebookPath]);
 
   useEffect(() => {
     if (isOpen && notebookPath) {
-      loadNotebook()
+      loadNotebook();
     }
-  }, [isOpen, notebookPath])
-
-  const loadNotebook = async () => {
-    setLoading(true)
-    setError(null)
-    try {
-      const response = await fetch(notebookPath)
-      if (!response.ok) {
-        throw new Error('Failed to load notebook')
-      }
-      const data = await response.json()
-      console.log('showing on notebook viewer ', data);
-      setNotebookData(data)
-    } catch (err) {
-      setError('Failed to load notebook content')
-      console.error('Error loading notebook:', err)
-    } finally {
-      setLoading(false)
-    }
-  }
+  }, [isOpen, notebookPath, loadNotebook]);
 
   const renderMarkdown = (source: string[]) => {
-    const content = source.join('')
+    const content = source.join("");
     return (
       <div className="prose prose-sm max-w-none">
-        <div dangerouslySetInnerHTML={{ __html: content.replace(/\n/g, '<br/>') }} />
+        <div
+          dangerouslySetInnerHTML={{ __html: content.replace(/\n/g, "<br/>") }}
+        />
       </div>
-    )
-  }
+    );
+  };
 
   const renderCode = (cell: NotebookCell) => {
-    const code = cell.source.join('')
+    const code = cell.source.join("");
     return (
       <div className="bg-gray-900 rounded-lg p-4 mb-4">
         <div className="flex items-center justify-between mb-2">
           <div className="flex items-center gap-2">
             <Code className="w-4 h-4 text-gray-400" />
             <span className="text-gray-400 text-sm">
-              {cell.execution_count ? `In [${cell.execution_count}]:` : 'Code:'}
+              {cell.execution_count ? `In [${cell.execution_count}]:` : "Code:"}
             </span>
           </div>
           <Play className="w-4 h-4 text-gray-400" />
@@ -85,16 +92,24 @@ export default function NotebookViewer({ isOpen, onClose, notebookPath, title }:
             <div className="flex items-center gap-2 mb-2">
               <span className="text-gray-400 text-sm">Output:</span>
             </div>
-<pre className="text-blue-400 text-sm overflow-x-auto">
-  <code>{JSON.stringify(cell.outputs?.[0]?.text ?? cell.outputs?.[0]?.data?.['text/plain'] ?? '', null, 2)}</code>
-</pre>
+            <pre className="text-blue-400 text-sm overflow-x-auto">
+              <code>
+                {JSON.stringify(
+                  cell.outputs?.[0]?.text ??
+                    cell.outputs?.[0]?.data?.["text/plain"] ??
+                    "",
+                  null,
+                  2
+                )}
+              </code>
+            </pre>
           </div>
         )}
       </div>
-    )
-  }
+    );
+  };
 
-  if (!isOpen) return null
+  if (!isOpen) return null;
 
   return (
     <motion.div
@@ -155,14 +170,12 @@ export default function NotebookViewer({ isOpen, onClose, notebookPath, title }:
                   transition={{ delay: index * 0.1 }}
                   className="border border-gray-200 rounded-lg overflow-hidden"
                 >
-                  {cell.cell_type === 'markdown' ? (
+                  {cell.cell_type === "markdown" ? (
                     <div className="p-4 bg-gray-50">
                       {renderMarkdown(cell.source)}
                     </div>
                   ) : (
-                    <div className="p-4">
-                      {renderCode(cell)}
-                    </div>
+                    <div className="p-4">{renderCode(cell)}</div>
                   )}
                 </motion.div>
               ))}
@@ -171,5 +184,5 @@ export default function NotebookViewer({ isOpen, onClose, notebookPath, title }:
         </div>
       </motion.div>
     </motion.div>
-  )
+  );
 }
