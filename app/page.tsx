@@ -140,6 +140,53 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Projects Section */}
+      <section id="projects" className="min-h-screen flex items-center px-4 bg-white">
+        <div className="max-w-6xl mx-auto w-full">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gradient">
+              Projects
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              A collection of projects I am building along my AI journey.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[{
+              title: 'Coming Soon',
+              description: 'I will add my finished projects here with demos and source code.',
+              tags: ['AI', 'ML', 'Next.js']
+            }].map((project, index) => (
+              <motion.div
+                key={project.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: index * 0.2 }}
+                viewport={{ once: true }}
+                className="bg-white rounded-2xl shadow-lg p-10 card-hover border border-gray-100 min-h-[260px] flex flex-col"
+              >
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">{project.title}</h3>
+                <p className="text-gray-600 leading-relaxed mb-4 flex-1">{project.description}</p>
+                <div className="flex flex-wrap gap-2">
+                  {project.tags.map(tag => (
+                    <span key={tag} className="text-xs px-3 py-1 rounded-full bg-gray-100 text-gray-700">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
     </div>
   )
 }
